@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Contact | XYZ Corporation</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+	<link href="https://fonts.googleapis.com/css?family=Lobster|Montserrat" rel="stylesheet">
+
+    <style>
+        body, h1, ul, li, a {
+            margin: 0;
+            padding: 0;
+            text-decoration: none;
+        }
+        body {
+            font-family: Arial, sans-serif;
+        }
+        header {
+            background-color:gold;
+            color: white;
+            padding: 20px;
+            position: sticky;
+            top: 0;  
+            z-index: 1000;
+         }
+        nav {
+            width: 90%;
+            margin: 0 auto;
+        }
+        .logo{
+            display: flex;
+            padding: 5px 40px;
+            font-size: 35px;
+        }
+        .logo a{
+            text-decoration: none;
+            color: rgb(28, 215, 34);
+            text-size-adjust: 30px;
+            font-family: Arial, Helvetica, sans-serif;
+            background: linear-gradient(rgb(248, 7, 7), purple);
+           -webkit-text-fill-color: transparent;
+           -webkit-background-clip: text;
+        }
+        #navli {
+            list-style: none;  
+            display: flex;
+            justify-content: flex-end; 
+        }
+        #navli li {
+            margin-left: 20px; 
+        }
+        #navli a {
+            color: white; 
+            transition: color 0.3s ease-in-out;
+        }
+        .homeblack:hover, .homered:hover {
+            color: #ddd; 
+        }
+        .homered {
+            color: #ff4500; 
+        }
+        .center-container {
+            display: flex;
+            /* justify-content: center;  */
+            /* align-items: center;   */
+            height: 80vh;
+            background: green;
+            background-color: green;
+            /* margin-bottom: 30px; */
+            /* width: 200vh; */
+        }
+        .mapouter {
+            position: relative;
+            text-align: center; 
+            height: 80%;
+            color: goldenrod;
+            font-family: 'Open Sans', sans-serif;
+            width: 1080px; 
+            margin: auto; 
+        }
+        .gmap_canvas {
+            overflow: hidden;
+            background: none!important;
+            height: 400px;
+            width: 1080px;
+        }
+        .gmap_canvas a:hover{
+            background-color: goldenrod;
+            padding: 10px;        
+            -webkit-transition: 0.2s linear;
+	        -moz-transition: 0.2s linear;
+	        -ms-transition: 0.2s linear;
+	        -o-transition: 0.2s linear;
+	        transition: 0.2s linear;
+        }
+        .bottom_page{
+            background-image: linear-gradient(grey, black);
+            padding: 30px;
+            height: 70%;
+            color: goldenrod;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        #navli a:hover{
+            background-color: goldenrod;
+            justify-content: space-between;
+            padding: 10px 2px;
+        }
+
+    </style>
+
+</head>
+<body>
+	<header>
+		<nav>
+            <div class="logo"><a href="Home.html">EAMS</a></div>
+			<!-- <h1>EAMS</h1> -->
+			<ul id="navli">
+				<li><a class="homeblack" href="home.html">Home</a></li>
+				<li><a class="homeblack" href="#setting">Services</a></li>
+				<li><a class="homered" href="contact.html">Contact Us</a></li>
+                <li><a class="homeblack" href="login.html">Notification</a></li>
+				<li><a class="homeblack" href="logout.php">LOG OUT</a></li>
+			</ul>
+		</nav>
+	</header>
+
+    <div class="center-container">
+        <div class="mapouter">
+            <div class="gmap_canvas">
+            <iframe width="1080" height="250" id="gmap_canvas" src="https://maps.google.com/maps?q=Meru%20Uni&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+            G-Maps Courtesy - <a href="https://www.embedgooglemap.net">Kuyuti</a>
+            </div>
+        </div>
+    </div>
+    <div class="bottom_page">
+        <p style="font-family: Montserrat; text-align: center; font-size: 25px"><i class="fas fa-map-marked"></i>MikhyJ Org</p>
+    	<p style="font-family: Montserrat; text-align: center; font-size: 25px"><i class="fas fa-address-book"></i> +254-790862982/ 779606100</p>
+    	<p style="font-family: Montserrat; text-align: center; font-size: 25px"><i class="fas fa-envelope"></i>jumanewton73@outlook.com</p>
+
+    </div>
+</body>
+</html>

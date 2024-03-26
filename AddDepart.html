@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Department</title>
+    <link rel="stylesheet" href="Register.css">
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places&callback=initMap"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+</head>
+<body>
+  <header class="head">
+		<nav class="header">
+       <div class="logo"><a href="Home.html">EAMS</a></div>
+			<!-- <h1>EAMS</h1> -->
+			<ul id="navlii">
+				<li><a class="homeblack" href="home.html">Home</a></li>
+				<li><a class="homeblack" href="#setting">Services</a></li>
+				<li><a class="homered" href="contact.html">Contact Us</a></li>
+        <li><a class="homeblack" href="login.html">Notification</a></li>
+				<li><a class="homeblack" href="logout.php">LOG OUT</a></li>
+			</ul>
+		</nav>
+	</header>
+    <div>
+        <form method="post" action="connectdpt.php">
+     <h2>Create Department</h2>
+     <div class="form-group gender">
+        <label for="Deparment">Department Name</label>
+        <select name="dptname" id="Deparment">
+          <option value="" selected disabled>Select Deparment</option>
+          <option value="Information Technology">Information Technology</option>
+          <option value="Finance">Finance</option>
+          <option value="Human Resource">Human Resource</option>
+          <option value="Supply Chain">Supply Chain</option>
+          <option value="Adminstration">Adminstration</option>
+        </select>
+      </div>
+     <div class="form-group fullname">
+       <label for="HOD">Head of Department</label>
+       <input type="text" name="dpthod" id="HOD" placeholder="Head of Depertment">
+     </div>
+     <div class="form-group personalnumber">
+       <label for="Extention Number">Extention Number</label>
+       <input type="text" name="dptextnum" id="Ext_number" placeholder="Ext Number">
+     </div>
+     <div class="form-group email">
+      <label for="email">Department Email</label>
+      <input type="text" name="dptemail" id="email" placeholder="Department Email/abc@ict.must.ac.ke">
+      <div id="emailFeedback" style="color: red;"></div>
+    </div>
+     <div class="form-group address">
+        <label for="Address">Deparment Adress</label>
+        <input type="text" name="dptaddress" id="Adress" placeholder="Department address">
+      </div>
+      <div class="form-group date">
+        <label for="date">Date Created</label>
+        <input type="date" name="dptdate" id="date" placeholder="Date Created">
+      </div>
+      <div class="form-group location">
+        <label for="Location">Location</label>
+        <input type="text" name="dptlocaton" id="Location" placeholder="Add Deparment Location">
+      </div>
+     <div class="form-group submit-btn">
+       <input type="submit" value="Add Deparment" id="submitBtn">
+     </div>
+   </form>
+   </div>
+</body>
+</html>
+
+
+<script>
+
+document.getElementById('dptname').addEventListener('blur', function() {
+    var departmentName = this.value;
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', 'check_department.php', true);
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    
+    xhr.onload = function() {
+        if (this.status == 200) {
+            var response = this.responseText;
+            if (response == 'exists') {
+                alert('This department is already registered.');
+                document.getElementById('submitBtn').disabled = true;
+            } else {
+                document.getElementById('submitBtn').disabled = false;
+            }
+        }
+    };
+    xhr.send('dptname=' + encodeURIComponent(departmentName));
+});
+
+
+
+  // CHECK EMAIL STRUC
+  document.getElementById('email').addEventListener('input', function() {
+    const emailInput = this.value;
+    const feedbackElement = document.getElementById('emailFeedback');
+
+    if (validateDepartmentEmail(emailInput)) {
+      feedbackElement.textContent = 'Valid department email.';
+      feedbackElement.style.color = 'green';
+    } else {
+      feedbackElement.textContent = 'Invalid department email.';
+      feedbackElement.style.color = 'red';
+    }
+  });
+
+  function validateDepartmentEmail(email) {
+    const regex = /^(.+)@(ict|finance|administration|hresource)\.must\.ac\.ke$/;
+    return regex.test(email);
+  }
+
+// DATE VALIDATER
+  document.addEventListener('DOMContentLoaded', function() {
+        const dateInput = document.getElementById('date');
+        const today = new Date();
+        const yyyy = today.getFullYear();
+        let mm = today.getMonth() + 1; // getMonth() is zero-based
+        let dd = today.getDate();
+
+        if (mm < 10) mm = '0' + mm;
+        if (dd < 10) dd = '0' + dd;
+
+        dateInput.min = `${yyyy}-${mm}-${dd}`;
+    });
+</script>
+
+

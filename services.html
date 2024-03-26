@@ -1,0 +1,201 @@
+
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Website raiting form</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+    <style>
+      html, body {
+      height: 100%;
+      }
+      body, h1, h3, input { 
+      padding: 0;
+      margin: 0;
+      outline: none;
+      font-family: Arial, sans-serif;
+      font-size: 16px;
+      color: #666;
+      }
+      h1, h3 {
+      padding: 12px 0;
+      font-weight: 400;
+      }
+      h1 {
+      font-size: 28px;
+      }
+    .main-block {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: transparent;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+}
+
+.main-block h1, .main-block h3 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.info, .grade-type {
+    margin-bottom: 20px;
+}
+
+.info-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.icon {
+    margin-right: 10px;
+    font-size: 20px;
+}
+
+input[type="text"], textarea {
+    width: 100%;
+    padding: 10px;
+    margin-left: 10px;
+    border: 1px solid goldenrod;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.radio {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 18px;
+    user-select: none;
+}
+
+.radio input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #eee;
+    border-radius: 50%;
+}
+
+.radio:hover input ~ .checkmark {
+    background-color: #ccc;
+}
+
+.radio input:checked ~ .checkmark {
+    background-color: green;
+}
+
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.radio input:checked ~ .checkmark:after {
+    display: block;
+}
+
+.radio .checkmark:after {
+    top: 9px;
+    left: 9px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: white;
+}
+
+      button {
+      width: 10%;
+      padding: 8px;
+      margin-left: 40%;
+      border-radius: 5px; 
+      border: none;
+      background: green; 
+      font-size: 14px;
+      font-weight: 600;
+      color: white;
+      }
+      button:hover {
+      background: goldenrod;
+      }
+      .grade-type div {
+      display: flex;
+      margin: 6px 0;
+      }
+      @media (min-width: 568px) {
+      .info {
+      flex-flow: row wrap;
+      justify-content: space-between;
+      }
+      .info-item {
+      width: 48%;
+      }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="main-block">
+      <h1>Employee Attendance Rating Form</h1>
+      <form action="/">
+        <div class="info">
+          <div class="info-item">
+            <label class="icon" for="name"><i class="fas fa-user"></i></label>
+            <input type="text" name="name" id="name" placeholder="Name" required/>
+          </div>
+          <div  class="info-item">
+            <label class="icon" for="age"><i class="fas fa-calendar"></i></i></label>
+            <input type="text" name="age" id="age" placeholder="Age" required/>
+          </div>
+          <div  class="info-item">
+            <label class="icon" for="email"><i class="fas fa-envelope"></i></label>
+            <input type="text" name="email" id="email" placeholder="Email" required/>
+          </div>
+          <div  class="info-item">
+            <label class="icon" for="phone"><i class="fas fa-phone"></i></label>
+            <input type="text" name="phone" id="phone" placeholder="Phone" required/>
+          </div>
+        </div>
+        <div class="grade-type">
+          <h3>Rate Company's Employee Attendance System</h3>
+          <div> 
+            <input type="radio" value="none" id="radioOne" name="grade" checked/>
+            <label for="radioOne" class="radio">Excellent</label>
+          </div>
+          <div>
+            <input type="radio" value="none" id="radioTwo" name="grade" />
+            <label for="radioTwo" class="radio">Very Good</label>
+          </div>
+          <div>
+            <input type="radio" value="none" id="radioThree" name="grade" />
+            <label for="radioThree" class="radio">Good</label>
+          </div>
+          <div>
+            <input type="radio" value="none" id="radioFour" name="grade" />
+            <label for="radioFour" class="radio">Bad</label>
+          </div>
+          <div>
+            <input type="radio" value="none" id="radioFive" name="grade" />
+            <label for="radioFive" class="radio">Very Bad</label>
+          </div>
+        </div>
+        <h3>Please Comment on Your Rating</h3>
+        <textarea rows="4"></textarea>
+        <button type="submit" href="/">Submit</button>
+      </form>
+    </div>
+  </body>
+</html>

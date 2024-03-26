@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
+    <link rel="stylesheet" href="./style.css">
+    <title>About us</title>
+    <style>
+        body{
+            background-image: gold;
+            background-size: cover;
+        }
+
+        body, h1, ul, li, a {
+            margin: 0;
+            padding: 0;
+            text-decoration: none;
+        }
+        body {
+            font-family: Arial, sans-serif;
+        }
+        header {
+            background-color:gold;
+            color: white;
+            padding: 20px;
+            position: sticky;
+            top: 0;  
+            z-index: 1000;
+         }
+        nav {
+            width: 90%;
+            margin: 0 auto;
+        }
+        .logo{
+            display: flex;
+            padding: 5px 40px;
+            font-size: 35px;
+        }
+        .logo a{
+            text-decoration: none;
+            color: rgb(28, 215, 34);
+            text-size-adjust: 30px;
+            font-family: Arial, Helvetica, sans-serif;
+            background: linear-gradient(rgb(248, 7, 7), purple);
+           -webkit-text-fill-color: transparent;
+           -webkit-background-clip: text;
+        }
+        #navli {
+            list-style: none;  
+            display: flex;
+            justify-content: flex-end; 
+        }
+        #navli li {
+            margin-left: 20px; 
+        }
+        #navli a {
+            color: white; 
+            transition: color 0.3s ease-in-out;
+        }
+        .homeblack:hover, .homered:hover {
+            color: #ddd; 
+        }
+        .homered {
+            color: #ff4500; 
+        }
+        #navli a:hover{
+            background-color: goldenrod;
+            justify-content: space-between;
+            padding: 10px 2px;
+        }
+        #about{
+            width: 100%;
+            height: 100%;
+            background-color: goldenrod;
+            color:white;
+            text-align:center;
+            padding: 5px;
+        }
+
+
+    </style>
+</head>
+
+<body>
+    <header>
+		<nav>
+            <div class="logo"><a href="Home.html">EAMS</a></div>
+			<!-- <h1>EAMS</h1> -->
+			<ul id="navli">
+				<li><a class="homeblack" href="home.html">Home</a></li>
+				<li><a class="homeblack" href="#setting">Services</a></li>
+				<li><a class="homered" href="contact.html">Contact Us</a></li>
+                <li><a class="homeblack" href="login.html">Notification</a></li>
+				<li><a class="homeblack" href="logout.php">LOG OUT</a></li>
+			</ul>
+		</nav>
+	</header>
+   <div class="main_body">
+    <main>
+        <div id="about">
+            <h1>About Our Company</h1>
+            <br>
+            <p>Discover Our History and Mission and See How We're Dedicated to Providing Excellent IT Services.</p>
+            <br>
+            <br>
+            <h1>Who We Are</h1>
+            <br>
+            <p>We are a dynamic IT consulting and service company driven by passion and innovation. With 150+ talented professionals, we foster a people-first culture and are certified as a Best Place to Work. Achieving 2x growth in the last financial year, we are dedicated to delivering the best solutions for our clients</p>
+            <br>
+            <br>
+            <h1>Our Mission</h1>
+            <br>
+            <br>
+            <p>At HyScaler, our mission is to serve as a reliable and trusted partner and advisor, working collaboratively with businesses to help them achieve their objectives and drive significant transformation in their operations. We strive to understand each client's unique needs and provide tailored, innovative solutions across strategy, consulting, digital, technology, and operations.</p>
+            <br>
+            <p>Our team of dedicated experts is committed to empowering clients with the latest advancements in AI, ML, Blockchain, and other emerging technologies, ensuring they stay competitive in a rapidly evolving digital landscape. By fostering long-term relationships built on trust, transparency, and shared success, HyScaler aims to revolutionize the way organizations grow, adapt, and thrive in the face of complex challenges.</p>
+             <br>
+             <br>
+             <h1>Our Vision</h1>
+             <br>
+             <p>At HyScaler, our vision is to become a global leader in IT services by developing and implementing cutting-edge AI, ML, Blockchain, and other advanced technologies to create sustainable, intelligent, and secure solutions for businesses, communities, and the world. We strive to harness the power of technology to transform the way people live, work, and connect, while remaining committed to the principles of sustainability, inclusivity, and ethical innovation.</p>
+             <br>
+             <p>By staying true to our vision, HyScaler aims to shape a future that transcends technological boundaries, transforming lives and enabling progress for businesses, societies, and the planet.</p>
+    
+        </div>
+    </main>
+   </div>
+   <footer>
+    <div class="content">
+      <div class="top">
+        <div class="logo-details">
+          <i class="fab fa-slack"></i>
+          <span class="logo_name">EAMS</span>
+        </div>
+        <div class="media-icons">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+      <div class="link-boxes">
+        <ul class="box">
+          <li class="link_name">Company</li>
+          <li><a href="Home.html">Home</a></li>
+          <li><a href="contact.html">Contact us</a></li>
+          <li><a href="about.html">About us</a></li>
+          <li><a href="help.html">Help</a></li>
+        </ul>
+        <ul class="box">
+          <li class="link_name">Services</li>
+          <li><a href="Home.html">Employee</a></li>
+          <li><a href="#">Department</a></li>
+          <li><a href="#">Leave</a></li>
+          <li><a href="#">Time Clock</a></li>
+        </ul>
+        <ul class="box">
+          <li class="link_name">Account</li>
+          <li><a href="#">Profile</a></li>
+          <li><a href="#">Messages</a></li>
+          <li><a href="#">Settings</a></li>
+          <li><a href="#">Security & Privacy</a></li>
+        </ul>
+        <ul class="box">
+          <li class="link_name">Report</li>
+          <li><a href="#">Employee</a></li>
+          <li><a href="#">Department</a></li>
+          <li><a href="#">Shift </a></li>
+          <li><a href="#">Leave</a></li>
+        </ul>
+        <ul class="box input-box">
+          <li class="link_name">Subscribe</li>
+          <li><input type="text" placeholder="Enter your email"></li>
+          <li><input type="button" value="Subscribe"></li>
+        </ul>
+      </div>
+    </div>
+    <div class="bottom-details">
+      <div class="bottom_text">
+        <span class="copyright_text">Copyright © 2024 <a href="Home.html">EAMS.</a>All rights reserved</span>
+        <span class="policy_terms">
+          <a href="#">Privacy policy</a>
+          <a href="#">Terms & condition</a>
+        </span>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

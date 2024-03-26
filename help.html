@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
+    <title>how can i help you?</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./footer.css">
+    <style>
+        body{
+            padding: 0;
+            margin: 0;
+            /* background-image:white; */
+            background-size: cover;
+            font-family: Arial, sans-serif;
+        }
+
+        body, h1, ul, li, a {
+            margin: 0;
+            padding: 0;
+            text-decoration: none;
+        }
+        main {
+            background-color: #ddd;
+        }
+        header {
+            background-color:gold;
+            color: white;
+            padding: 20px;
+            position: sticky;
+            top: 0;  
+            z-index: 1000;
+         }
+        nav {
+            width: 90%;
+            margin: 0 auto;
+        }
+        .logo{
+            display: flex;
+            padding: 5px 40px;
+            font-size: 35px;
+        }
+        .logo a{
+            text-decoration: none;
+            color: rgb(28, 215, 34);
+            text-size-adjust: 30px;
+            font-family: Arial, Helvetica, sans-serif;
+            background: linear-gradient(rgb(248, 7, 7), purple);
+           -webkit-text-fill-color: transparent;
+           -webkit-background-clip: text;
+        }
+        #navli {
+            list-style: none;  
+            display: flex;
+            justify-content: flex-end; 
+        }
+        #navli li {
+            margin-left: 20px; 
+        }
+        #navli a {
+            color: white; 
+            transition: color 0.3s ease-in-out;
+        }
+        .homeblack:hover, .homered:hover {
+            color: #ddd; 
+            text-decoration: none;
+
+        }
+        .homered {
+            color: #ff4500; 
+        }
+        #navli a:hover{
+            background-color: goldenrod;
+            justify-content: space-between;
+            text-decoration: none;
+            padding: 10px 2px;
+        }
+        section {
+            padding: 20px;
+        }
+        .faq {
+            margin-bottom: 20px;
+        }
+        .faq h2 {
+            margin-bottom: 10px;
+        }
+        .faq-item {
+            margin-bottom: 10px;
+        }
+        .faq-item h3 {
+            margin: 0;
+            cursor: pointer;
+        }
+        .faq-item .answer {
+            display: none;
+        }
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+            width: 80%;
+            height: 90%;
+        }
+
+
+
+        .help-container {
+            color: white;
+            width: 400px;
+            padding: 20px;
+            background-color: goldenrod;
+            border-radius: 5px;
+            box-shadow: 0 0 10px green;
+        }
+        input[type="text"],
+        input[type="email"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid green;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        textarea {
+            height: 150px;
+        }
+        input[type="submit"] {
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4rem;
+            cursor: pointer;
+            background-color: gold;
+            /* background:linear-gradient(to right,darkblue,blue,lightblue) ; */
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        .button-container {
+            position: fixed; /* or 'absolute' depending on use case */
+            top: 6px;
+            right: 5px;
+            padding: 10px;
+        }
+        .btn {
+        display: inline-block;
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+        text-align: center;
+        text-decoration: none;
+        outline: none;
+        color: white;
+        background-color: blue;
+        border: none;
+        border-radius: 5px;
+        box-shadow: 0 2px green;
+    }
+    .btn:hover { background-color: violet }
+    .btn a {
+        color: white; 
+        text-decoration: none;  
+        display: block;  
+    }
+    </style>
+</head>
+
+<body>
+
+    <header>
+		<nav>
+            <div class="logo"><a href="Home.html">EAMS</a></div>
+			<!-- <h1>EAMS</h1> -->
+			<ul id="navli">
+				<li><a class="homeblack" href="home.html">Home</a></li>
+				<li><a class="homeblack" href="#setting">Services</a></li>
+				<li><a class="homered" href="contact.html">Contact Us</a></li>
+                <li><a class="homeblack" href="login.html">Notification</a></li>
+			</ul>
+            <div class="button-container">
+                <button type="button" class="btn btn-light"><a href="logout-user.php">Logout</a></button>
+            </div>
+		</nav>
+	</header>
+    
+   <div>
+    <main>
+ 
+        <section>
+             <form action="./help_submit.php" method="post">
+
+            <div class="faq">
+                <h2>Frequently Asked Questions</h2>
+                <div class="faq-item">
+                    <h3 onclick="toggleAnswer(this)">How do I reset my password?</h3>
+                    <p class="answer">To reset your password, go to the login page and click on the "Forgot Password" link. Follow the instructions to reset your password.</p>
+                </div>
+                <div class="faq-item">
+                    <h3 onclick="toggleAnswer(this)">How can I update my account information?</h3>
+                    <p class="answer">You can update your account information by logging into your account and navigating to the settings or profile page. From there, you can update your information as needed.</p>
+                </div>
+            </div>
+        
+            <div class="help-container">
+                <h2>Help</h2>
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" required>
+            
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+            
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" required></textarea>
+            
+                    <input type="submit" name="submit" value="Submit">
+                </form>
+            </div>
+        </section>
+    </main>
+   </div>
+
+   <footer>
+    <div class="content">
+      <div class="top">
+        <div class="logo-details">
+          <span class="logo_name">EAMS</span>
+        </div>
+        <div class="media-icons">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+      <div class="link-boxes">
+        <ul class="box">
+          <li class="link_name">Company</li>
+          <li><a href="Home.html">Home</a></li>
+          <li><a href="contact.html">Contact us</a></li>
+          <li><a href="about.html">About us</a></li>
+          <li><a href="help.html">Help</a></li>
+        </ul>
+        <ul class="box">
+          <li class="link_name">Services</li>
+          <li><a href="Home.html">Employee</a></li>
+          <li><a href="#">Department</a></li>
+          <li><a href="#">Leave</a></li>
+          <li><a href="#">Time Clock</a></li>
+        </ul>
+        <ul class="box">
+          <li class="link_name">Account</li>
+          <li><a href="#">Profile</a></li>
+          <li><a href="#">Messages</a></li>
+          <li><a href="#">Settings</a></li>
+          <li><a href="#">Security & Privacy</a></li>
+        </ul>
+        <ul class="box">
+          <li class="link_name">Report</li>
+          <li><a href="#">Employee</a></li>
+          <li><a href="#">Department</a></li>
+          <li><a href="#">Shift </a></li>
+          <li><a href="#">Leave</a></li>
+        </ul>
+        <ul class="box input-box">
+          <li class="link_name">Subscribe</li>
+          <li><input type="text" placeholder="Enter your email"></li>
+          <li><input type="button" value="Subscribe"></li>
+        </ul>
+      </div>
+    </div>
+    <div class="bottom-details">
+      <div class="bottom_text">
+        <span class="copyright_text">Copyright © 2024 <a href="Home.html">EAMS.</a>All rights reserved</span>
+        <span class="policy_terms">
+          <a href="#">Privacy policy</a>
+          <a href="#">Terms & condition</a>
+        </span>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,275 @@
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+  .container {
+    width: 750px;
+  }
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+  .container {
+    width: 970px;
+  }
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+  .container {
+    width: 1170px;
+  }
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Open Sans', sans-serif;
+}
+body {
+  display: flex;
+  min-height: 100vh;
+  background-image: linear-gradient(rgb(252, 182, 4), green, rgb(128, 96, 0));
+  background: scroll;
+  background-color: transparent;
+}
+
+.Top_menu{
+  background-color: gold;
+  position: absolute;
+  width: 100%;
+  height: 130px;
+  z-index: 99;
+}
+.Top_menu .logo{
+  display: flex;
+  padding: 5px 40px;
+  font-size: 35px;
+}
+.Top_menu .logo a{
+  text-decoration: none;
+  color: rgb(28, 215, 34);
+  text-size-adjust: 30px;
+  font-family: Arial, Helvetica, sans-serif;
+  background: linear-gradient(rgb(248, 7, 7), purple);
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+}
+.Top_content{
+  position: relative;
+  padding: -5px;
+  left: 115%;
+  top: 10px;
+  transform: translate(-50%, -50%);
+}
+.Top_menu ul{
+  list-style: none;
+  display: inline-flex;
+  align-self: flex-end;
+}
+.Top_content ul li a{
+  color: white;
+  padding: 15px;
+  text-decoration: none;
+  -webkit-transition: 0.2s linear;
+	-moz-transition: 0.2s linear;
+	-ms-transition: 0.2s linear;
+	-o-transition: 0.2s linear;
+	transition: 0.2s linear;
+}
+.Top_content ul li a:hover{
+  background-color: goldenrod;
+  justify-content: space-between;
+  border-radius: 5px;
+}
+ /* Search bar */
+ .button-container {
+  position: relative;  
+  top: 6px;
+  right: 5px; 
+  padding: 10px;
+}
+.btn {
+display: inline-block;
+padding: 10px 20px;
+font-size: 16px;
+cursor: pointer;
+text-align: center;
+text-decoration: none;
+outline: none;
+color: white;
+background-color: blue;
+border: none;
+border-radius: 5px;
+box-shadow: 0 2px green;
+}
+.btn:hover { background-color: violet }
+.btn a {
+color: white; 
+text-decoration: none;  
+display: block;  
+}
+.search_bar {
+  position: fixed;  
+  top: 9px;
+  right: 120px;
+  padding: 10px;
+  height: 57px;
+  max-width: 330px;
+}
+.search_bar input {
+  height: 100%;
+  width: 100%;
+  border-radius: 25px;
+  font-size: 18px;
+  outline: none;
+  background-color: white;
+  border: 1px solid green;
+  padding: 0 20px;
+}
+.heading {
+  position: relative;
+  align-content: center;
+  color: rgb(5, 139, 5);
+  margin-top: 1px;
+  margin-left: 20%;
+}
+
+/* SIDE MENU */
+ 
+nav {
+  background-color: gold;
+	position: relative;
+  padding-top: 80px;
+	margin: 50px;
+	width: 360px;
+}
+nav ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+nav ul li a {
+	display: block;
+	padding: 10px 15px;
+	color: #fff;
+	text-decoration: none;
+	-webkit-transition: 0.2s linear;
+	-moz-transition: 0.2s linear;
+	-ms-transition: 0.2s linear;
+	-o-transition: 0.2s linear;
+	transition: 0.2s linear;
+}
+nav ul li a:hover {
+	background-color: goldenrod;
+}
+nav ul li a .fa {
+	width: 16px;
+	text-align: center;
+	margin-right: 5px;
+	float:right;
+}
+nav ul ul {
+	background: goldenrod;
+}
+nav ul li ul li a {
+	
+	border-left: 4px solid transparent;
+	padding: 10px 20px;
+}
+nav ul li ul li a:hover {
+
+	border-left: 4px solid gold;
+}
+
+form.nosubmit {
+  border: none;
+  padding: 0;
+}
+
+
+/* Timer */
+.baseclock {
+  width: 400px;
+  height: 180px;
+  position: absolute;
+  top: 50%;
+  left: 65%;
+  transform: translate(-50%, -50%);
+  background: gold;
+  border-radius: 5px;
+}
+.time {
+  width: 100%;
+  height: 30%;
+  /* background: green; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.descr{
+  font-size: 15px;
+  top: 15%;
+  left: 1%;
+  align-items: center;
+  text-align: center;
+  color: green;
+  position: relative;
+}
+.time span{
+  font-size: 50px;
+  width: 100px;
+  display: inline-block;
+  text-align: center;
+  color: white;
+  position: relative;
+
+}
+.time span::after{
+  font-size: 15px;
+  position: absolute;
+  bottom: -5px;
+  transform: translateX(-50px);
+}
+#hrs::after{
+  content: "Hours";
+}
+#mins::after{
+  content: "Minutes";
+}
+#secs::after{
+  content: "Seconds";
+}
+
+/* Clock in button */
+.clockin {
+  background-color: blue;
+  
+}
+#Clockon {
+  color: rgb(240, 14, 14);
+  top: 90%;
+  left: 50%;
+  position: absolute;
+}
+.submit-btn {
+  margin-top: 30px;
+}
+.submit-btn input {
+
+  color: white;
+  border: none;
+  height: auto;
+  font-size: 16px;
+  padding: 13px 0;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 500;
+  text-align: center;
+  background: #1BB295;
+  transition: 0.2s ease;
+}
+.submit-btn input:hover {
+  background: #179b81;
+}
