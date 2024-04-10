@@ -112,7 +112,7 @@ header .search_bar input {
             <ul id="navli">
                 <li><a class="homeblack" href="http://localhost/Employee/Home.html">Home</a></li>
                 <li><a class="homeblack" href="http://localhost/Employee/services.html">Services</a></li>
-                <li><a class="homered" href="http://localhost/Employee/contact.html">Contact Us</a></li>
+                <li><a class="homered" href="http://localhost/Employee/contact.html">Conduct Us</a></li>
                 <li><a class="homeblack" href="#">Notification</a></li>
             </ul>
             <div class="button-container" style="float: right;">  
@@ -306,10 +306,10 @@ header .search_bar input {
 									
 							 	<tr>
 									<td><?php echo $cnt;?></td>
-							 		<td><?php echo $result['name']; ?></td>
+							 		<td><?php echo $result['fullname']; ?></td>
 							 		<td><?php echo $result['department']; ?></td>
-							 		<td><?php echo $result['leavedate']; ?></td>
-							 		<td><?php echo $result['leavereason']; ?></td>
+							 		<td><?php echo $result['checkoutdate']; ?></td>
+							 		<td><?php echo $result['reason']; ?></td>
 							 		<td>
 							 			<?php 
 							 			if ($result['status'] == 0) {
@@ -396,7 +396,7 @@ header .search_bar input {
 	</div>
 
 
-	<!-- Add Users Modal -->
+	<!-- View Department Modal -->
 	<div class="modal fade" id="addEmpModal">
 		<div class="modal-dialog modal-lg">
 			<div class="modal-content">

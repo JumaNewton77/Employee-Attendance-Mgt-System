@@ -43,7 +43,7 @@ if($email != false && $password != false){
             text-decoration: none;
         }
         header {
-            background-color:gold;
+            background-color: #ffe34d;
             color: white;
             padding: 20px;
             position: sticky;
@@ -123,7 +123,7 @@ if($email != false && $password != false){
             <ul id="navli">
                 <li><a class="homeblack" href="home.php">Home</a></li>
                 <li><a class="homeblack" href="services.html">Services</a></li>
-                <li><a class="homered" href="contact.html">Contact Us</a></li>
+                <li><a class="homered" href="contact.html">Conduct Us</a></li>
                 <li><a class="homeblack" href="login.html">Notification</a></li>
             </ul>
             <div class="button-container" style="float: right;">  
@@ -148,16 +148,16 @@ if($email != false && $password != false){
           <div class="menu_title menu_dahsboard"></div>
           <!-- Attendance -->
           <li class="item">
-            <div href="#" class="nav_link submenu_item">
+            <a href="../Employee/timeclock/Index.php" class="nav_link submenu_item">
               <span class="navlink_icon">
                 <i class="bx bx-home-alt"></i>
               </span>
               <span class="navlink">Time Clock</span>
               <i class="bx bx-chevron-right arrow-left"></i>
-            </div>
+            <a>
           </li>
           <li class="item">
-            <div href="#" class="nav_link submenu_item">
+            <div href="../Employee/leave/dashboard.php" class="nav_link submenu_item">
               <span class="navlink_icon">
                 <i class="bx bx-grid-alt"></i>
               </span>
@@ -232,13 +232,12 @@ if($email != false && $password != false){
       </div>
     </nav>
 
-
     <div class="baseclock">
         <p class="descr">Current Time:</p>
-        <div style="color: white;   width: 300px; padding: 17px 15px; height: 30%; display: flex; font-size: 22px;">
-          <div class="date"></div>
+        <div style="color: white; width: 400px; padding: 17px 15px; height: 30%; display: flex; font-size: 22px;">
+            <div class="date"></div>
         </div>
-        <div class="time">
+        <div class="time" >
             <span id="hrs">00</span>
             <span>:</span>
             <span id="mins">00</span>
@@ -247,51 +246,68 @@ if($email != false && $password != false){
         </div>
     </div>
     <form action="home.php">
-      <div class="Clockin">
-        <li><a href="#clockin">CLOCK IN</a></li>
-      </div>
+        <div class="Clockin">
+            <li><a href="#clockin">CLOCK IN</a></li>
+        </div>
     </form>
+
     </main>
 
 
 <script>
- const dateElement = document.querySelector(".date");
  
- function formatDate(date) {
-   const DAYS = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-   const MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
- 
-   return `${DAYS[date.getDay()]}, ${
-     MONTHS[date.getMonth()]
-   } ${date.getDate()}, ${date.getFullYear()}`;
- }
- setInterval(() => {
-   const now = new Date();
- 
-   // timeElement.textContent = formatTime(now);
-   dateElement.textContent = formatDate(now);
- }, 200);
- 
-       $('.sub-menu ul').hide();
-       $(".sub-menu a").click(function () {
-           $(this).parent(".sub-menu").children("ul").slideToggle("100");
-           $(this).find(".right").toggleClass("fa-caret-up fa-caret-down");
-       });
- 
-       // <!-- Timer -->
-       let hrs = document.getElementById("hrs");
-       let mins = document.getElementById("mins");
-       let secs = document.getElementById("secs");
- 
-       setInterval(()=>{
-         let currentTime = new Date();
- 
-         hrs.innerHTML = (currentTime.getHours()<10?"0":"")+currentTime.getHours();
-         mins.innerHTML = (currentTime.getMinutes()<10?"0":"")+currentTime.getMinutes();
-         secs.innerHTML = (currentTime.getSeconds()<10?"0":"")+currentTime.getSeconds();
-       },1000)
- 
- 
+
+function updateTime() {
+  const now = new Date();
+  const hrs = now.getHours();
+  const mins = now.getMinutes();
+  const secs = now.getSeconds();
+
+  document.getElementById("hrs").textContent = padZero(hrs);
+  document.getElementById("mins").textContent = padZero(mins);
+  document.getElementById("secs").textContent = padZero(secs);
+
+  const dateElement = document.querySelector(".date");
+  const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+  dateElement.textContent = now.toLocaleDateString('en-US', options);
+}
+
+function padZero(value) {
+  return value.toString().padStart(2, '0');
+}
+
+setInterval(updateTime, 1000);
+
+
+
+// function formatDate(date) {
+//   const DAYS = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+//   const MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+//   return `${DAYS[date.getDay()]}, ${MONTHS[date.getMonth()]} ${date.getDate()}, ${date.getFullYear()}`;
+// }
+// const dateElement = document.querySelector(".date");
+
+// setInterval(() => {
+//   const now = new Date();
+//   dateElement.textContent = formatDate(now);
+// }, 200);
+// $('.sub-menu ul').hide();
+// $(".sub-menu a").click(function () {
+//   $(this).parent(".sub-menu").children("ul").slideToggle("100");
+//   $(this).find(".right").toggleClass("fa-caret-up fa-caret-down");
+// });
+// let hrs = document.getElementById("hrs");
+// let mins = document.getElementById("mins");
+// let secs = document.getElementById("secs");
+
+// setInterval(() => {
+//   let currentTime = new Date();
+//   hrs.innerHTML = (currentTime.getHours() < 10 ? "0" : "") + currentTime.getHours();
+//   mins.innerHTML = (currentTime.getMinutes() < 10 ? "0" : "") + currentTime.getMinutes();
+//   secs.innerHTML = (currentTime.getSeconds() < 10 ? "0" : "") + currentTime.getSeconds();
+// }, 1000);
+
+    </script>
 </script>
 </body>
 </html>

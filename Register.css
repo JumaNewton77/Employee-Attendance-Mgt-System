@@ -12,7 +12,7 @@ body {
   padding: 0;
   font-family: Arial, sans-serif;
   min-height: 100vh;
-  background: green;
+  background: transparent;
 }
 body, h1, ul, li, a {
   margin: 0;
@@ -109,7 +109,7 @@ padding: 10px 2px;
     position: absolute;
     padding: 0 10px;
     padding: 25px;
-    background: #fff;
+    /* background: #fff; */
     max-width: 500px;
     width: 100%;
     border-radius: 7px;
@@ -189,9 +189,4 @@ padding: 10px 2px;
 
 
   /* End of REgister form */
-
-  /* MAIN HOME PAGE STARTS */
- 
-
-  /* MAIN HOME PAGE ENDS */
 

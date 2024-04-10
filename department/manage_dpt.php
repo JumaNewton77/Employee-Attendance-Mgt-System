@@ -116,7 +116,50 @@
         .material-icons {
             vertical-align: bottom;
         }
- 
+        header .button-container {
+  position: fixed; 
+  top: 6px;
+  right: 5px; 
+  padding: 10px;
+}
+header .btn {
+display: inline-block;
+padding: 10px 20px;
+font-size: 16px;
+cursor: pointer;
+text-align: center;
+text-decoration: none;
+outline: none;
+color: white;
+background-color: goldenrod;
+border: none;
+border-radius: 5px;
+box-shadow: 0 2px green;
+}
+header .btn:hover { background-color: gold }
+header .btn a {
+color: white; 
+text-decoration: none;  
+display: block;  
+}
+.search_bar {
+  position: fixed;  
+  top: 9px;
+  right: 120px;
+  padding: 10px;
+  height: 57px;
+  max-width: 330px;
+}
+.search_bar input {
+  height: 100%;
+  width: 100%;
+  border-radius: 25px;
+  font-size: 18px;
+  outline: none;
+  background-color: white;
+  border: 1px solid green;
+  padding: 0 20px;
+}
 
     </style>
 </head>
@@ -126,15 +169,21 @@
     <main>
     <header>
 		<nav>
-            <div class="logo"><a href="Home.html">EAMS</a></div>
+            <div class="logo"><a href="../Home.html">EAMS</a></div>
 			<!-- <h1>EAMS</h1> -->
 			<ul id="navli">
 				<li><a class="homeblack" href="../Home.html">Home</a></li>
-				<li><a class="homeblack" href="#setting">Services</a></li>
-				<li><a class="homered" href="contact.html">Contact Us</a></li>
-                <li><a class="homeblack" href="login.html">Notification</a></li>
-				<li><a class="homeblack" href="logout.php">LOG OUT</a></li>
+				<li><a class="homeblack" href="../services.html">Services</a></li>
+				<li><a class="homered" href="../contact.html">Contact Us</a></li>
+                <li><a class="homeblack" href="#">Notification</a></li>
+				<!-- <li><a class="homeblack" href="logout.php">LOG OUT</a></li> -->
 			</ul>
+            <div class="button-container" style="float: right;">  
+                <a href="logout-user.php" class="btn btn-light">Logout</a>  
+            </div>
+            <div class="search_bar">
+                <input type="text" placeholder="Search" />
+            </div>
 		</nav>
 	</header>
         <div class="registration">
@@ -183,14 +232,7 @@
                     <i class='material-icons'>delete</i>
                 </a>
               </td>";
-                    // echo "<td>
-                    //         <a class='btn btn-info btn-sm' href='edit_view_user.php?edit_id=" . $row['id'] . "'>Edit</a>
-                    //         &nbsp;
-                    //         <a class='btn btn-danger btn-sm' href='index.php?delid=" . $row['id'] . "' title='Delete' data-toggle='tooltip' onclick='return confirm(\"Do you really want to Delete ?\");'>
-                    //             <i class='material-icons'>delete</i>
-                    //         </a>
-                    //       </td>";
-                    echo "</tr>";
+                
                 }
             
                 // End table

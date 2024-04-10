@@ -8,7 +8,7 @@
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places&callback=initMap"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
 </head>
-<body>
+<body style="background-color: transparent;">
   <header class="head">
 		<nav class="header">
        <div class="logo"><a href="Home.html">EAMS</a></div>
@@ -23,7 +23,7 @@
 		</nav>
 	</header>
     <div>
-        <form method="post" action="connectdpt.php">
+        <form method="post" action="connectdpt.php" style="background-color: #e6e6e6;">
      <h2>Create Department</h2>
      <div class="form-group gender">
         <label for="Deparment">Department Name</label>
@@ -118,7 +118,7 @@ document.getElementById('dptname').addEventListener('blur', function() {
         const dateInput = document.getElementById('date');
         const today = new Date();
         const yyyy = today.getFullYear();
-        let mm = today.getMonth() + 1; // getMonth() is zero-based
+        let mm = today.getMonth() + 1; 
         let dd = today.getDate();
 
         if (mm < 10) mm = '0' + mm;

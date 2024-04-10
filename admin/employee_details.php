@@ -32,7 +32,7 @@
             background-size: cover;
         }
 
-        body, h1, ul, li, a {
+        body, ul, li, a {
             margin: 0;
             padding: 0;
             text-decoration: none;
@@ -144,6 +144,9 @@
         text-decoration: none;  
         display: block;  
     }
+    h1 .mng {
+        text-align: center;
+    }
     </style>
 </head>
 
@@ -168,7 +171,7 @@
 	</header>
         <div class="registration">
             <form action="registration_submit.php" method="post">
-            <h1>Manage Employees</h1>
+            <!-- <h1 class="mng">Manage Employees</h1> -->
 
             </form>
             <br><br><br>

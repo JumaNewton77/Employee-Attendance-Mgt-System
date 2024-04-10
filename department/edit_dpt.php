@@ -1,54 +1,6 @@
 
 
 <?php
-// if ($_SERVER["REQUEST_METHOD"] == "POST") {
-
-//   require_once "../Connect.php";
-
-//   $department_name = $conn->real_escape_string($_POST['dptname']);
-//   $department_email = $conn->real_escape_string($_POST['dptemail']);
-//   $head_of_department = $conn->real_escape_string($_POST['dpthod']);
-//   $department_code = $conn->real_escape_string($_POST['dptcode']);
-//   $department_telephone = $conn->real_escape_string($_POST['dpttelephone']);
-//   $department_location = $conn->real_escape_string($_POST['dptlocaton']);
-  
-//   // First, check if the department code exists
-//   $checkSql = "SELECT * FROM department WHERE dptemail = ?";
-//   $checkStmt = $conn->prepare($checkSql);
-//   $checkStmt->bind_param('s', $department_email);
-//   $checkStmt->execute();
-//   $result = $checkStmt->get_result();
-  
-//   if ($result->num_rows === 0) {
-//       echo "<script>alert('Department not recognized.'); window.history.back();</script>";
-//   } else {
-//       $sql = "UPDATE department SET 
-//               dptname = ?, 
-//               dptemail = ?, 
-//               dpthod = ?, 
-//               dpttelephone = ?, 
-//               dptlocaton = ?
-//               WHERE dptemail = ?";
-
-//       $stmt = $conn->prepare($sql);
-//       $stmt->bind_param('sssisi', $department_name, $department_email, $head_of_department, $department_telephone, $department_location, $department_code);
-
-//       if ($stmt->execute()) {
-//          header('Location: ../department/manage_dpt.php');
-//         //header('Location: ../admin/employee_details.php');
-//           exit();
-//       } else {
-//           echo "Error updating department details.";
-//       }
-//   }
-//    $stmt->close();
-//    $checkStmt->close();
-// } else {
-//   echo " ";
-// }
-
-
-
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
   require_once "../Connect.php";
@@ -58,42 +10,90 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $head_of_department = $conn->real_escape_string($_POST['dpthod']);
   $department_code = $conn->real_escape_string($_POST['dptcode']);
   $department_telephone = $conn->real_escape_string($_POST['dpttelephone']);
-  $department_location = $conn->real_escape_string($_POST['dptlocation']); // Corrected 'dptlocaton' typo
-
+  $department_location = $conn->real_escape_string($_POST['dptlocaton']);
+  
   // First, check if the department code exists
-  $checkSql = "SELECT * FROM department WHERE dptname = ?";
+  $checkSql = "SELECT * FROM department WHERE dptemail = ?";
   $checkStmt = $conn->prepare($checkSql);
-  if (!$checkStmt) {
-      echo "Prepare failed: (" . $conn->errno . ") " . $conn->error;
-      exit;
-  }
-  $checkStmt->bind_param('s', $department_name);
+  $checkStmt->bind_param('s', $department_email);
   $checkStmt->execute();
   $result = $checkStmt->get_result();
-
+  
   if ($result->num_rows === 0) {
       echo "<script>alert('Department not recognized.'); window.history.back();</script>";
   } else {
-      $updateSql = "UPDATE department SET dptname = ?, dptemail = ?, dpthod = ?, dpttelephone = ?, dptlocaton = ? WHERE dptname = ?";
-      $updateStmt = $conn->prepare($updateSql);
-      if (!$updateStmt) {
-          echo "Prepare failed: (" . $conn->errno . ") " . $conn->error;
-          exit;
-      }
-      $updateStmt->bind_param('sssiss', $department_name, $department_email, $head_of_department, $department_telephone, $department_location, $department_code);
+      $sql = "UPDATE department SET 
+              dptname = ?, 
+              dptemail = ?, 
+              dpthod = ?, 
+              dpttelephone = ?, 
+              dptlocaton = ?
+              WHERE dptemail = ?";
 
-      if ($updateStmt->execute()) {
-          header('Location: ../department/manage_dpt.php');
+      $stmt = $conn->prepare($sql);
+      $stmt->bind_param('sssisi', $department_name, $department_email, $head_of_department, $department_telephone, $department_location, $department_code);
+
+      if ($stmt->execute()) {
+        // header('Location: ../department/manage_dpt.php');
+         header('Location: ../department/manage_dpt.php');
           exit();
       } else {
-          echo "Error updating department details: " . $updateStmt->error;
+          echo "Error updating department details.";
       }
-      $updateStmt->close();
   }
-  $checkStmt->close();
+   $stmt->close();
+   $checkStmt->close();
 } else {
-  echo "Invalid request method.";
+  echo " ";
 }
+
+
+
+// if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+//   require_once "../Connect.php";
+
+//   $department_name = $conn->real_escape_string($_POST['dptname']);
+//   $department_email = $conn->real_escape_string($_POST['dptemail']);
+//   $head_of_department = $conn->real_escape_string($_POST['dpthod']);
+//   $department_code = $conn->real_escape_string($_POST['dptcode']);
+//   $department_telephone = $conn->real_escape_string($_POST['dpttelephone']);
+//   $department_location = $conn->real_escape_string($_POST['dptlocation']); // Corrected 'dptlocaton' typo
+
+//   // First, check if the department code exists
+//   $checkSql = "SELECT * FROM department WHERE dptname = ?";
+//   $checkStmt = $conn->prepare($checkSql);
+//   if (!$checkStmt) {
+//       echo "Prepare failed: (" . $conn->errno . ") " . $conn->error;
+//       exit;
+//   }
+//   $checkStmt->bind_param('s', $department_name);
+//   $checkStmt->execute();
+//   $result = $checkStmt->get_result();
+
+//   if ($result->num_rows === 0) {
+//       echo "<script>alert('Department not recognized.'); window.history.back();</script>";
+//   } else {
+//       $updateSql = "UPDATE department SET dptname = ?, dptemail = ?, dpthod = ?, dpttelephone = ?, dptlocaton = ? WHERE dptname = ?";
+//       $updateStmt = $conn->prepare($updateSql);
+//       if (!$updateStmt) {
+//           echo "Prepare failed: (" . $conn->errno . ") " . $conn->error;
+//           exit;
+//       }
+//       $updateStmt->bind_param('sssiss', $department_name, $department_email, $head_of_department, $department_telephone, $department_location, $department_code);
+
+//       if ($updateStmt->execute()) {
+//           header('Location: ../department/manage_dpt.php');
+//           exit();
+//       } else {
+//           echo "Error updating department details: " . $updateStmt->error;
+//       }
+//       $updateStmt->close();
+//   }
+//   $checkStmt->close();
+// } else {
+//   echo "Invalid request method.";
+// }
 
 ?>
 

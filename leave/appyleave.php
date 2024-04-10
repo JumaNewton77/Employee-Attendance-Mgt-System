@@ -113,7 +113,8 @@
       font-family: Roboto, Arial, sans-serif;
       font-size: 18px;
       color: #fff;
-      background-color: #006622;
+      /* background-color: #006622; */
+      background-color: #66b366;
       }
       textarea {
       width: calc(100% - 12px);
@@ -144,7 +145,8 @@
       }
       .banner::after {
       content: "";
-      background-color: green; 
+      /* background-color: green;  */
+      background-color: #66b366;
       position: absolute;
       border-radius: 5px;
       width: 100%;
@@ -307,7 +309,7 @@
 			<ul id="navli">
 				<li><a class="homeblack" href="../Home.html">Home</a></li>
 				<li><a class="homeblack" href="#setting">Services</a></li>
-				<li><a class="homered" href="../contact.html">Contact Us</a></li>
+				<li><a class="homered" href="../contact.html">Conduct Us</a></li>
                 <li><a class="homeblack" href="#login">Notification</a></li>
 			</ul>
             <div class="button-container" style="float: right;">  

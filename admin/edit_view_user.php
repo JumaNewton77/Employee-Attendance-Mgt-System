@@ -15,9 +15,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $city = $conn->real_escape_string($_POST['city']);
   $department = $conn->real_escape_string($_POST['department']);
   $ethnicity = $conn->real_escape_string($_POST['etninic']); 
-  $dob = $conn->real_escape_string($_POST['dob']);
-
-  // First, check if the personal number exists
+  $dob = $conn->real_escape_string($_POST['dob']); 
   $checkSql = "SELECT * FROM employee WHERE personalnumber = ?";
   $checkStmt = $conn->prepare($checkSql);
   $checkStmt->bind_param('s', $personalnumber);
@@ -26,8 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   
   if ($result->num_rows === 0) {
       echo "<script>alert('User Is NOT RECOGNIZED.'); window.history.back();</script>";
-  } else {
-      // Personal number exists, proceed to update
+  } else { 
       $sql = "UPDATE employee SET 
           fullname = ?, 
           email = ?, 
@@ -44,8 +41,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       $stmt->bind_param('ssiiissssi', $fullname, $email, $address, $phone, $street, $city, $department, $ethnicity, $dob, $personalnumber);
       //$stmt->bind_param('ssssssssss', $fullname, $email, $address, $phone, $street, $city, $department, $ethnicity, $dob, $personalnumber);
 
-      if ($stmt->execute()) {
-          // Redirect or notify of success as needed
+      if ($stmt->execute()) { 
           header('Location: ../admin/employee_details.php');
           exit();
       } else {
@@ -55,7 +51,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $stmt->close();
   $checkStmt->close();
 } else {
-  echo "Invalid request.";
+  //echo "Invalid request.";
 }
 ?>
 
@@ -180,7 +176,7 @@ select {
     padding: 10px;
     border: 2px solid #ccc;
     border-radius: 5px;
-    margin-bottom: 10px; /* Space between input fields */
+    margin-bottom: 10px;  
 }
 
 input[type="text"]:focus,
@@ -221,7 +217,7 @@ select:focus {
       }
 
       .button-container {
-            position: fixed; /* or 'absolute' depending on use case */
+            position: fixed; 
             top: 6px;
             right: 5px;
             padding: 10px;
@@ -326,6 +322,13 @@ select:focus {
     </form>
     </div> 
 
-   
+
+    <script>
+             // Date Validate
+             document.addEventListener("DOMContentLoaded", function() {
+      var today = new Date().toISOString().split('T')[0];
+      document.getElementById("date").setAttribute("max", today);
+});
+    </script>
   </body>
 </html>

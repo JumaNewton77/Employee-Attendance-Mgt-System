@@ -24,7 +24,7 @@ $sessionId = $_SESSION['session_id'];
 $endTime = date("Y-m-d H:i:s"); // Current time
 
 // Update the database with the end time
-$stmt = $conn->prepare("UPDATE Employee SET end_time = ? WHERE ses_id = ?");
+$stmt = $conn->prepare("UPDATE employee SET end_time = ? WHERE ses_id = ?");
 $stmt->bind_param("si", $endTime, $sessionId);
 $stmt->execute();
 $stmt->close();

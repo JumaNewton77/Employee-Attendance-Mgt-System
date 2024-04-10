@@ -1,27 +1,43 @@
-<?php 
-	include('../Connect.php'); 
-	//require_once ($_SERVER['DOCUMENT_ROOT'] . '/Employee/Connect.php');
-	include('inc/head.php'); 
+<?php
+	//include('inc/head.php'); 
+	require_once ($_SERVER['DOCUMENT_ROOT'] . '../Employee/Connect.php');
 	session_start();
-
 	if (isset($_SESSION['email'])) {
 		
 	}
 	else{
-		header('location:home.php');
+		header('location: ../Home.html');
 	}
 
+
+$sql = "SELECT employee.fullname, leaves.checkoutdate, leaves.checkindate, leaves.reason, leaves.status
+        FROM leaves
+        INNER JOIN employee ON leaves.personalnumber = employee.employee_id
+        ORDER BY leaves.status";
+
+$result = $conn->query($sql);
 ?>
-<body>
-	 
- <style>
-	header {
-            background-color:gold;
-            color: white;
-            padding: 20px;
-            position: sticky;
-            top: 0;  
-            z-index: 1000;
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Leave Management General Report</title>
+    <link rel="stylesheet" href="">
+    <style>
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;  
+}
+header {
+    background-color: gold;
+    color: white;
+    padding: 20px;
+    position: sticky;
+    top: 0;  
+    z-index: 1000;
          }
        header nav {
             width: 90%;
@@ -85,13 +101,14 @@ header .btn a {
 color: white; 
 text-decoration: none;  
 display: block;  
-}
+} 
 .search_bar {
   position: fixed;  
-  top: 9px;
-  right: 120px;
-  padding: 10px;
-  height: 57px;
+  top: 10px;
+  right: 160px;
+  padding: 5px;
+  height: 37px;
+  width: 170px;
   max-width: 330px;
 }
 .search_bar input {
@@ -104,14 +121,60 @@ display: block;
   border: 1px solid green;
   padding: 0 20px;
 }
- </style>
-	<header>
+
+
+table {
+    width: 90%;
+    margin: 20px auto;
+    border-collapse: collapse;
+}
+
+table, th, td {
+    border: 1px solid #ccc;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    background-color: #4CAF50;
+    color: white;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+a {
+    color: #333;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+h1, h2 {
+    color: #333;
+    text-align: center;
+}
+
+h1 {
+    margin-top: 20px;
+}
+
+    </style>
+</head>
+<body>
+<header>
         <nav>
-            <div class="logo"><a href="#">EAMS</a></div>
+            <div class="logo"><a href="http://localhost/Employee/Home.html">EAMS</a></div>
             <ul id="navli">
-                <li><a class="homeblack" href="../home.php">Home</a></li>
-                <li><a class="homeblack" href="../services.html">Services</a></li>
-                <li><a class="homered" href="../contact.html">Conduct Us</a></li>
+                <li><a class="homeblack" href="http://localhost/Employee/Home.html">Home</a></li>
+                <li><a class="homeblack" href="http://localhost/Employee/services.html">Services</a></li>
+                <li><a class="homered" href="http://localhost/Employee/contact.html">Conduct Us</a></li>
                 <li><a class="homeblack" href="#">Notification</a></li>
             </ul>
             <div class="button-container" style="float: right;">  
@@ -122,27 +185,11 @@ display: block;
             </div>
         </nav>
     </header>
-	 
-	<section id="sections" class="py-4 mb-4 bg-faded">
-		<div class="container">
-			<div class="row">
-				<div class="col-md"></div>
-				<div class="col-md-3">
-				<!-- data-toggle="modal" data-target="#addPostModal" -->
-					<a href="../leave/appyleave.php" class="btn btn-primary btn-block" style="border-radius:0%;"><i class="fa fa-plus"></i> Apply Leave</a>  
-				</div>
-				<div class="col-md-3">
-					<a href="#" class="btn btn-warning btn-block" style="border-radius:0%;" data-toggle="modal" data-target="#addCateModal"><i class="fa fa-spinner"></i> Pendings</a>
-				</div>
-				<div class="col-md-3">
-					<a href="#" class="btn btn-success btn-block" style="border-radius:0%;" data-toggle="modal" data-target="#addUsertModal"><i class="fa fa-check"></i> Approved Leaves</a>
-				</div>
-				<div class="col-md"></div>
-			</div>
-		</div>
-	
-	</section>
-	<section id="post">
+
+    <h1>Leave Management General Report</h1>
+
+    <h2>Pending Leaves</h2>
+    <section id="post">
 		<div class="container">
 			<div class="row">
 			<table class="table table-bordered table-hover table-striped">
@@ -160,7 +207,7 @@ display: block;
 							</thead>
 							 <tbody>
 							 	<?php 
-									$sql = "SELECT * FROM leaves ORDER BY checkindate DESC";
+									$sql = "SELECT * FROM leaves WHERE status = 0 ORDER BY fullname DESC";
 									$que = mysqli_query($conn,$sql);
 									$cnt = 1;
 									while ($result = mysqli_fetch_assoc($que)) {
@@ -196,46 +243,44 @@ display: block;
 			</div>
 		</div>
 	</section>
-	<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-	<!----Section3 footer ---->
-	 <!----Section3 footer ---->
-	<!----Section3 footer ---->
-	<!----Section3 footer ---->
-	
-	 
-	<div class="modal fade" id="addCateModal">
-		<div class="modal-dialog modal-lg">
-			<div class="modal-content">
-				<div class="modal-header bg-warning text-white">
-					<div class="modal-title">
-						<h5>Pending Leaves</h5>
-					</div>
-					<button class="close" data-dismiss="modal"><span>&times;</span></button>
-				</div>
-				<div class="modal-body">
-				<table class="table table-bordered table-hover table-striped">
+     
+
+    <h2>Approved Leaves</h2>
+    <section id="post">
+		<div class="container">
+			<div class="row">
+			<table class="table table-bordered table-hover table-striped">
 							<thead>
 								<th>#</th>
 								<th>Name</th>
+								<th>P.Number</th>
+								<th>Phone</th>
+								<th>Email</th>
 								<th>Department</th>
-								<th>Leave Date</th>
+								<th>From</th>
+								<th>To</th>
 								<th>Reason</th>
 								<th>Status</th>
 							</thead>
 							 <tbody>
 							 	<?php 
-									$sql = "SELECT * FROM leaves WHERE status = 0 && email='".$_SESSION['email']."'";
-									$stmt = mysqli_query($con,$sql);
-									$cnt=1;
-									while ($result = mysqli_fetch_assoc($stmt)) {
+									$sql = "SELECT * FROM leaves WHERE status = 1 ORDER BY fullname DESC";
+									$que = mysqli_query($conn,$sql);
+									$cnt = 1;
+									while ($result = mysqli_fetch_assoc($que)) {
+										
 									?>
 
 									
 							 	<tr>
 									<td><?php echo $cnt;?></td>
 							 		<td><?php echo $result['fullname']; ?></td>
+									 <td><?php echo $result['personalnumber']; ?></td>
+									 <td><?php echo $result['phonenumber']; ?></td>
+									 <td><?php echo $result['email']; ?></td>
 							 		<td><?php echo $result['department']; ?></td>
 							 		<td><?php echo $result['checkoutdate']; ?></td>
+									 <td><?php echo $result['checkindate']; ?></td>
 							 		<td><?php echo $result['reason']; ?></td>
 							 		<td>
 							 			<?php 
@@ -249,53 +294,52 @@ display: block;
 							 		 ?>
 							 		</td>
 							 	</tr>
-
+								
 							 </tbody>
 						</table>
-					
-				</div>
-				
 			</div>
 		</div>
-	</div>
-	
-	<div class="modal fade" id="addCateModal">
-		<div class="modal-dialog modal-lg">
-			<div class="modal-content">
-				<div class="modal-header bg-success text-white">
-					<div class="modal-title">
-						<h5>Approved Leaves</h5>
-					</div>
-					<button class="close" data-dismiss="modal"><span>&times;</span></button>
-				</div>
-				<div class="modal-body">
-				<table class="table table-bordered table-hover table-striped">
+	</section>
+    <h2>Declined Leaves</h2>
+    <section id="post">
+		<div class="container">
+			<div class="row">
+			<table class="table table-bordered table-hover table-striped">
 							<thead>
-								<th></th>
+								<th>#</th>
 								<th>Name</th>
+								<th>P.Number</th>
+								<th>Phone</th>
+								<th>Email</th>
 								<th>Department</th>
-								<th>Date</th>
+								<th>From</th>
+								<th>To</th>
 								<th>Reason</th>
 								<th>Status</th>
 							</thead>
 							 <tbody>
 							 	<?php 
-									$sql = "SELECT * FROM leaves WHERE status = 1";
+									$sql = "SELECT * FROM leaves WHERE status = 0 ORDER BY fullname DESC";
 									$que = mysqli_query($conn,$sql);
 									$cnt = 1;
 									while ($result = mysqli_fetch_assoc($que)) {
+										
 									?>
 
 									
 							 	<tr>
 									<td><?php echo $cnt;?></td>
-							 		<td><?php echo $result['name']; ?></td>
+							 		<td><?php echo $result['fullname']; ?></td>
+									 <td><?php echo $result['personalnumber']; ?></td>
+									 <td><?php echo $result['phonenumber']; ?></td>
+									 <td><?php echo $result['email']; ?></td>
 							 		<td><?php echo $result['department']; ?></td>
-							 		<td><?php echo $result['leavedate']; ?></td>
-							 		<td><?php echo $result['leavereason']; ?></td>
+							 		<td><?php echo $result['checkoutdate']; ?></td>
+									 <td><?php echo $result['checkindate']; ?></td>
+							 		<td><?php echo $result['reason']; ?></td>
 							 		<td>
 							 			<?php 
-							 			if ($result['status'] == 0) {
+							 			if ($result['status'] == "") {
 											echo "<span class='badge badge-warning'>Pending</span>";
 							 			}
 							 			else{
@@ -305,26 +349,15 @@ display: block;
 							 		 ?>
 							 		</td>
 							 	</tr>
-
+								
 							 </tbody>
 						</table>
-					
-				</div>
-			
 			</div>
 		</div>
-	</div>
-  
-  <script src="js/jquery.min.js"></script>
-  <script src="js/tether.min.js"></script>
-  <script src="js/bootstrap.min.js"></script>
-  <script src="https://cdn.ckeditor.com/4.9.1/standard/ckeditor.js"></script>
-  <script>
-	CKEDITOR.replace('editor1');
-  </script>
+	</section>
+    <script src="script.js"></script>
 </body>
 </html>
-<?php 
-	 
-	
- ?>
+
+<?php
+$conn->close();

@@ -88,7 +88,7 @@ display: block;
 
 .sidebar {
 
-  background-color:gold;
+  background-color: #ffe34d;
   width: 310px;
   position: fixed;
   top: 60px;
@@ -165,7 +165,7 @@ display: block;
   white-space: nowrap;
 }
   .sidebar.close .nav_link:hover {
-    background: goldenrod;
+    background: rgb(145, 117, 48);
   }
   .submenu_item {
     cursor: pointer;
@@ -206,7 +206,7 @@ display: block;
   height: 180px;
   position: absolute;
   top: 50%;
-  left: 65%;
+  left: 60%;
   transform: translate(-50%, -50%);
   background: gold;
   border-radius: 5px;
